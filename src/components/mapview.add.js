@@ -19,7 +19,7 @@ export function MapAddComponent() {
         siteMetadata {
           title
           mapData {
-            bounds
+            center
           }
         }
       }
@@ -107,9 +107,6 @@ export function MapAddComponent() {
     error = content.title.length === 0 ? true : error;
     error = content.description.length === 0 ? true : error;
     error = content.address.length === 0 ? true : error;
-    error = content.contact.length === 0 ? true : error;
-    error = content.name.length === 0 ? true : error;
-    error = content.email.length === 0 ? true : error;
     error = content.category.length === 0 ? true : error;
 
     if (error) {
@@ -183,7 +180,7 @@ export function MapAddComponent() {
               <h4 className="ui horizontal divider header">Dane o miejscu</h4>
               <p>Uzupełnij ponizszy formularz pomocnymi informacjami.</p>
 
-              <div className="field">
+              <div className="field required">
                 <label>Kategoria</label>
                 <select
                   value={content.category}
