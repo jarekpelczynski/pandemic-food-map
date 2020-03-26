@@ -1,0 +1,20 @@
+{
+  "data": {
+    "-M2svAwqc8sXktcvZ2eA": {
+      "address": "33-332 Kraków",
+      "category": "food",
+      "contact": "WhatsApp: 0034 234 82 30",
+      "description": "Lunche, sniadania itp.",
+      "email": "petwalker77@dog.love",
+      "name": "Bal",
+      "phone": "028 373 29 28",
+      "position": [
+        19.96102,
+        50.04859
+      ],
+      "timestamp": 1584724150609,
+      "title": "Bal",
+      "approved": true
+    }
+  }
+}
