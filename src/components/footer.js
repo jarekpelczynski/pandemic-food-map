@@ -24,7 +24,7 @@ const Footer = () => {
           <a href={`mailto:${data.site.siteMetadata.email}`}>
             <i className='ui icon envelope' />Write us an email
           </a>{' '}|{' '}
-          Built with <i className={'ui icon heart'} />by <a href='#' target={'_blank'} rel={'noopener noreferrer'}>{data.site.siteMetadata.author}</a>
+          Built with <i className={'ui icon heart'} /> for local community.
       </div>
     </footer>
   );
