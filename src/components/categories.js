@@ -3,7 +3,7 @@ module.exports = [
 	// { ident: 'safespace', text: 'Communal Safe Space', color: '#7f8c8d' },
 	{ ident: 'food', text: 'Jedzenie na dowóz', color: '#D980FA' },
 	{ ident: 'takeaway', text: 'Jedzenie na wynos', color: '#30336b' },
-	// { ident: 'shop', text: 'Happy to shop for you', color: '#8e44ad' },
+	{ ident: 'shop', text: 'Sklep', color: '#8e44ad' },
 	// { ident: 'information', text: 'Info Material', color: '#2980b9' },
 	// { ident: 'medical', text: 'Medical Supplies', color: '#d35400' },
 	// { ident: 'petcare', text: 'Pet Care', color: '#e1b12c' },
