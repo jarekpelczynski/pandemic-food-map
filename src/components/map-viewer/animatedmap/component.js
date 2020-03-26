@@ -125,7 +125,7 @@ function AnimatedMap(props) {
       this.touchZoomRotate.disable()
     }
 
-    map.deactivateMap()
+    map.activateMap()
 
     const interactionControl = new InteractionToggle(map, [
       'Activate map',
@@ -186,12 +186,6 @@ function AnimatedMap(props) {
         }
       })
 
-      // Fit Map
-      // map.fitBounds(
-      //   data.site.siteMetadata.mapData.bounds,
-      //   { duration: 700 }
-      // )
-
       // On Load Callback
       if (props.onLoad) {
         props.onLoad()
@@ -201,7 +195,7 @@ function AnimatedMap(props) {
 
   return (
     <>
-      {mapObject && (
+      {/* {mapObject && (
         <div className='activateDesktop'>
           <ActivationButton
             activate={() => mapObject.activateMap()}
@@ -211,7 +205,7 @@ function AnimatedMap(props) {
             icons={['moving.svg', 'scrolling.svg']}
           />
         </div>
-      )}
+      )} */}
       <div id='map'>{props.children}</div>
     </>
   )

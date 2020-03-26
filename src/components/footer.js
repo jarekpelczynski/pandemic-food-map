@@ -8,8 +8,8 @@ const Footer = () => {
     query {
       site {
         siteMetadata {
-          author,
-          title,
+          author
+          title
           email
         }
       }
@@ -17,14 +17,17 @@ const Footer = () => {
   `);
 
   return (
-    <footer className='ui vertical inverted segment'>
-      <div className='ui center aligned container'>
-        <i className='ui icon copyright' />
-          {new Date().getFullYear()}{' '}{data.site.siteMetadata.title}{' ' }|{' '}
+    <footer className="ui vertical segment">
+      <div className="ui center aligned container">
+        <small>
+          <i className="ui icon copyright" />
+          {new Date().getFullYear()} {data.site.siteMetadata.title} |{' '}
           <a href={`mailto:${data.site.siteMetadata.email}`}>
-            <i className='ui icon envelope' />Write us an email
-          </a>{' '}|{' '}
-          Built with <i className={'ui icon heart'} /> for local community.
+            <i className="ui icon envelope" />
+            Write us an email
+          </a>{' '}
+          | Built with <i className={'ui icon heart'} /> for local community.
+        </small>
       </div>
     </footer>
   );
