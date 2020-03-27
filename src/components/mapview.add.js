@@ -2,15 +2,11 @@ import React, { useState } from 'react';
 import './mapview.add.scss';
 import AnimatedMap from './map-add/animatedmap/component.js';
 import categories from '../components/categories';
-import deliveries from '../components/deliveries';
+import deliveryTypes from './deliveryTypes';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import firebase from 'gatsby-plugin-firebase';
 
 const scrollToElement = require('scroll-to-element');
-
-/*
-See gatsby-config.js in main dir for bounds
- */
 
 export function MapAddComponent() {
   const data = useStaticQuery(graphql`
@@ -34,23 +30,35 @@ export function MapAddComponent() {
   const [content, setContent] = useState({
     position: [],
     category: '',
+    deliveryTypes: deliveryTypes.reduce(
+      (acc, v) => ({ ...acc, [v.ident]: false }),
+      {}
+    ),
     title: '',
     description: '',
     contact: '',
     address: '',
-    phone: '',
-    email: '',
-    name: '',
     timestamp: Date.now(),
     approved: false,
   });
 
   const onChange = e => {
-    // content[e.target.name] = e.target.value
     const c = { ...content };
     c[e.target.name] = e.target.value;
     setContent(c);
   };
+
+  const handleDeliveryTypes = e => {
+    setContent({
+      ...content,
+      deliveryTypes: {
+        ...content.deliveryTypes,
+        [e.target.value]: e.target.checked,
+      },
+    });
+  };
+
+  const getCategoryTip = () => categories.find(c => c.ident === content.category).tip
 
   React.useEffect(() => {
     if (mapActive) {
@@ -68,12 +76,6 @@ export function MapAddComponent() {
           ],
         });
       });
-
-      // // Fit effect
-      // map.fitBounds(
-      //   data.site.siteMetadata.mapData.bounds,
-      //   { duration: 700 }
-      // )
     }
   }, [mapActive]);
 
@@ -196,19 +198,28 @@ export function MapAddComponent() {
                     </option>
                   ))}
                 </select>
+                {content.category && (
+                  <small>{getCategoryTip()}</small>
+                )}
               </div>
 
               {content.category === 'food' && (
                 <div className="field">
                   <label>Opcję dowozu</label>
                   <p>
-                    Wybierz jakie formy dowozu są dostępne.<br />
-                    Zaznacz <strong>Własny dowóz (ograniczony)</strong> jeśli miejsce dostarcza tylko w małym, ograniczonym obszarze.
+                    Wybierz jakie formy dowozu są dostępne.
+                    <br />
+                    Zaznacz <strong>Własny dowóz (ograniczony)</strong> jeśli
+                    miejsce dostarcza tylko w małym, ograniczonym obszarze.
                   </p>
-                  {deliveries.map(d => (
+                  {deliveryTypes.map(d => (
                     <label key={d.ident} className="checkobx-label">
-                      <input value={d.ident} type="checkbox" />
-                      {' '}
+                      <input
+                        checked={content.deliveryTypes[d.ident]}
+                        value={d.ident}
+                        type="checkbox"
+                        onChange={handleDeliveryTypes}
+                      />{' '}
                       {d.text}
                     </label>
                   ))}
@@ -242,7 +253,7 @@ export function MapAddComponent() {
                 <textarea
                   rows={4}
                   name="contact"
-                  placeholder="Najszybszy kontakt z miejscem. Przykład: Whatsapp: 012 234 23 23, Messenger: Fancy restauracja, Email: zamow@restauracja.pl"
+                  placeholder="Przykład: Whatsapp: 012 234 23 23, Messenger: Fancy restauracja, Email: zamow@restauracja.pl"
                   defaultValue={content.contact}
                   onChange={onChange}
                 />
@@ -324,8 +335,8 @@ export function MapAddComponent() {
           mile widziany, jeśli masz pomysł jak usprawnić działanie strony to
           napisz.
           <h2>Dlaczego tylko Kraków?</h2>
-          Na ten moment jest to miejsce w którym mieszkam i sam potrzebuję
-          takiej mapy z miejscami gdzie mogę coś zamówić do jedzenia. Aplikacja
+          Kraków miejscem, w którym mieszkam i sam potrzebuję
+          takiej mapy z miejscami, gdzie mogę zamówić coś do jedzenia. Aplikacja
           jest udostępniona na zasadach Open Srouce i kazdy moze postawić swoja
           wersja dla swojego miasta – jeśli masz tylko wiedzę i odrobinę ochoty.
         </div>

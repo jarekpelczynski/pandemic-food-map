@@ -5,9 +5,8 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     author: 'Jarek Pelczynski',
-    title: 'Community Food Map',
-    description:
-      'This is the open source project for building your own community map.',
+    title: 'Krakow Community Food Map',
+    description: '',
     email: 'jarek@pelczynski.me',
     teaserImage: "https://www.whozinberg.org/teaser.jpg",
     menuLinks: [
