@@ -7,5 +7,5 @@ module.exports = [
 	// { ident: 'information', text: 'Info Material', color: '#2980b9' },
 	// { ident: 'medical', text: 'Medical Supplies', color: '#d35400' },
 	// { ident: 'petcare', text: 'Pet Care', color: '#e1b12c' },
-	// { ident: 'other', text: 'Other', color: '#222f3e' }
+	{ ident: 'service', text: 'Usługa', color: '#222f3e', tip: 'Przykłady: usługa transportowa, transport' }
 ]

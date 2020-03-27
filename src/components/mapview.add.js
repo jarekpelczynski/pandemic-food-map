@@ -199,7 +199,7 @@ export function MapAddComponent() {
                   ))}
                 </select>
                 {content.category && (
-                  <small>{getCategoryTip()}</small>
+                  <small><i className="info circle icon" /><strong>{getCategoryTip()}</strong></small>
                 )}
               </div>
 
