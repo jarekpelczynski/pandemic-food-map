@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     author: 'Jarek Pelczynski',
-    title: 'Krakow Community Food Map',
+    title: 'CBZ',
     description: '',
     email: 'jarek@pelczynski.me',
     teaserImage: "https://www.whozinberg.org/teaser.jpg",
@@ -29,7 +29,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: "UA-XXXXXXXXX-X",
+        trackingId: "UA-161883140-1",
       },
     },
     {
